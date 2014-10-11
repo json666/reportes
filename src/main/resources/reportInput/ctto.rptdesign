@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v201405191524 Build &lt;4.4.0.v20140606-1451></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="myParam" id="9">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="ctto_DS" id="7">
+            <method name="open"><![CDATA[//convertimos el “String” en “JSON”.
+jsonData = eval('('+params["myParam"].value+')');
+
+//obtenemos solo el tag “result”, con este tag nos tiene que enviar la capa de “gestionReportes”
+jsonData = jsonData.result;
+
+//variable global en el reporte
+valor = true;
+]]></method>
+        </script-data-source>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="ctto_Data Set" id="8">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">valorCapital</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">observaciones</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">ci</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">deudor</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">deudorAP</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">deudorAM</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">direccion</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">nro</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">zona</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">fecha</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">valorCapital</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observaciones</property>
+                </structure>
+                <structure>
+                    <property name="columnName">ci</property>
+                </structure>
+                <structure>
+                    <property name="columnName">deudor</property>
+                </structure>
+                <structure>
+                    <property name="columnName">deudorAP</property>
+                </structure>
+                <structure>
+                    <property name="columnName">deudorAM</property>
+                </structure>
+                <structure>
+                    <property name="columnName">direccion</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nro</property>
+                </structure>
+                <structure>
+                    <property name="columnName">zona</property>
+                </structure>
+                <structure>
+                    <property name="columnName">fecha</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">valorCapital</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">observaciones</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">ci</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">deudor</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">deudorAP</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">deudorAM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">direccion</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">nro</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">zona</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">fecha</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">ctto_DS</property>
+            <method name="fetch"><![CDATA[//la variable valor está definida en el Data Source (paso 10), este nos permite ingresar una sola vez a esta parte del reporte.
+while(valor) {
+
+//estamos asignando a la variable del reporte el valor del JSON.
+	row["valorCapital"] =  jsonData.valorCapital;
+	row["observaciones"] =  jsonData.observaciones;	
+	row["ci"] =  jsonData.solicitud.cliente.persona.numeroCi;
+	row["deudor"] =  jsonData.solicitud.cliente.persona.nombres;
+	row["deudorAP"] =  jsonData.solicitud.cliente.persona.primerApellido;
+	row["deudorAM"] =  jsonData.solicitud.cliente.persona.segundoApellido;
+	row["direccion"] =  jsonData.solicitud.cliente.persona.domicilio.direccionDomicilio;
+	row["nro"] =  jsonData.solicitud.cliente.persona.domicilio.nroDomicilio;
+	row["zona"] =  jsonData.solicitud.cliente.persona.domicilio.zona;
+	row["fecha"] =  jsonData.fechaCredito;
+
+//cambiamos el valor de la variable  a false.
+	valor = false;
+//indicamos que se tiene que imprimir esta parte
+	return true;
+
+}
+//indicamos que ya no se tiene que imprimir.
+return false;
+]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="52">
+            <property name="height">19.385416666666668in</property>
+            <column id="53"/>
+            <row id="54">
+                <property name="height">16.395833333333332in</property>
+                <cell id="55">
+                    <label id="84">
+                        <property name="fontWeight">bold</property>
+                        <property name="textAlign">center</property>
+                        <text-property name="text">DOCUMENTO PRIVADO</text-property>
+                    </label>
+                    <text id="252">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[CONSTE POR EL PRESENTE CONTRATO DE PRESTACIÓN DE  SERVICIOS INTEGRADOS PROFESIONALES, EL CUAL PODRÁ ELEVARSE A INSTRUMENTO PÚBLICO POR EL SOLO RECONOCIMIENTO DE FIRMAS Y RUBRICAS ANTE AUTORIDAD COMPETENTE A SOLICITUD DE CUALQUIERA DE LAS PARTES, SUSCRITO AL TENOR DE LAS SIGUIENTES CLAUSULAS:
+<B>PRIMERA.- (PARTES CONTRATANTES).-</B> Celebran el presente contrato:
+1.1.- Celebran el presente acto jurídico firma "VISION PC", legalmente establecida e inscrita en  las oficinas de Fundempresa (Concesionaria del Servicio  Nacional de Registro de Comercio) con Matricula No. 00128793 y Numero de identificación Tributaria (NIT) 2081567013, domiciliado en la Plaza Alonso de Mendoza No. 500 Edif. Comercial Santa Anita Piso 1 Of. 101 de la ciudad de La Paz en calidad de “VISION PC”, representado por sus personeros cuyos nombres y firmas figuran al final. 
+1.2.- "VISION PC", quien en adelante será denominado CONTRATISTA(s), brinda los servicios de venta de artículos varios como ser: Televisores, equipo sonido, computadoras, laptop, línea blanca, automóviles, motos, etc., así mismo ofrece también  "SERVICIOS INTEGRADOS PROFESIONALES"]]></text-property>
+                    </text>
+                    <text-data id="249">
+                        <property name="dataSet">ctto_Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">ci</property>
+                                <text-property name="displayName">ci</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["ci"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">deudor</property>
+                                <text-property name="displayName">deudor</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["deudor"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">deudorAP</property>
+                                <text-property name="displayName">deudorAP</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["deudorAP"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">deudorAM</property>
+                                <text-property name="displayName">deudorAM</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["deudorAM"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">direccion</property>
+                                <text-property name="displayName">direccion</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["direccion"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nro</property>
+                                <text-property name="displayName">nro</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["nro"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">zona</property>
+                                <text-property name="displayName">zona</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["zona"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <expression name="valueExpr">"1.3.- Por otra parte el/la/los/las Sr/a/es "+row["deudor"]+" "+row["deudorAP"]+" "+row["deudorAM"]+", con CI Nº"+row["ci"]+"Con DOMICILIADO en la Calle/Av./Pza "+row["direccion"]+" Nº "+row["nro"]+" "+row["zona"]+"- La Paz, mayor (es)  de edad y hábil(es) por derecho, quien en adelante será denominado el/la/los/as COMITENTE(S), requiere contratar los SERVICIOS INTEGRADOS PROFESIONALES de VISION PC"</expression>
+                        <property name="contentType">html</property>
+                    </text-data>
+                    <text id="253">
+                        <property name="contentType">auto</property>
+                        <text-property name="content"><![CDATA[1.4 El domicilio señalado por el (los) "COMITENTE(S)", y/o GARANTE (S) se constituye en DOMICILIO ESPECIAL, de conformidad con el articulo 29 parágrafo II del Código Civil, donde se practicaran valida y legalmente todas las citaciones y/o notificaciones judiciales correspondientes personales o por cedulas, sin lugar a posterior observación, incidente o recurso alguno. En caso que (los) COMITENTE(S), y/o GARANTE(S) cambien de domicilio tendrán la obligación de notificar de esta situación a la firma “VISION PC”, de lo contrario y conforme a lo señalado anteriormente se practicaran válidamente todas las citaciones y/o notificaciones en el DOMICILIO ESPECIAL.
+<B>SEGUNDA.- (OBJETO DEL CONTRATO).-</B> Al presente por así convenir las partes sin que medie error dolo ni violencia se decide celebrar el presente contrato privado.
+2.1.- El/la/los/las "COMITENTE" declara que requiere la contratación de los "Servicios Integrados Profesionales" de "VISION PC" razón por la cual decide realizar este Documento Privado.
+ 2.2.- El objeto del presente contrato es la contratación de los "Servicios Integrados Profesionales" ofrecidos por el CONTRATISTA y requeridos por el/la/los/as COMITENTE(S).
+2.3.- (GARANTIAS DE LOS PRODUCTOS VENDIDOS).- Reparaciones bajo Garantía (De acuerdo a DS 29519, Art. 6, Numeral   II, Inciso b). Todos los productos que "VISION PC" vende a sus clientes son productos nuevos/seminuevos y tienen la garantía correspondiente del fabricante, salvo algunas excepciones claramente identificadas. El fabricante es el único responsable de esta garantía, y la función de "VISION PC" es la de tramitar esta garantía ante el fabricante para su reparación. Bajo ningún caso, "VISION PC" será responsable por el buen o mal funcionamiento de los productos vendidos "VISION PC" hará todo lo posible para procesar y/o reparar todos los productos recibidos para reparación por garantía en el menor tiempo posible. Esta garantía puede ser tramitada en cualquier Centro de Servicio Autorizado de las oficinas en el Estado Plurinacional de Bolivia.
+Existen algunos Productos los cuales "VISION PC" no es Centro de Servicio Autorizado, y tampoco está autorizado a recibir productos defectuosos; es estos casos, los Distribuidores serán remitidos con sus productos a los Centros de Servicios Autorizados por los Fabricantes, quienes serán los únicos responsables de la reparación de los mismos.
+<B>TERCERA.- (LUGAR Y FORMA DE PAGO)</B>.- El pago por los servicios profesionales integrados realizados por la empresa "VISION PC", es acordado por ambas partes y es de la siguiente manera:
+ 3.1.- Una de las formas de pago será mediante una comisión de acuerdo al crédito otorgado como resultado de los servicios realizados que consta de la siguiente manera:
+Por el monto $us. 1 a 500 la comisión será un 20%
+Por el monto de $us. 501 a 1000 la comisión será un 17%
+Por el monto de $us. 1001 a 10.000 la comisión será un 15%
+Por el monto de $us. 10.001 en adelante una comisión será un 14%
+3.2.- Es también parte de la forma de pago por los servicios realizados, la obligación de adquirir con el dinero del crédito ayudado a obtener gracias a los "SERVICIOS INTEGRALES PROFESIONALES" un producto que el cliente con absoluta libertad escoja de la proforma propuesta por la firma "VISION PC". 
+3.3.- Es necesario que el producto escogido de la proforma propuesta por la firma "VISION PC" por el COMITENTE tenga igual valor al crédito obtenido gracias a los "SERVICIOS INTEGRADOS PROFESIONALES". 
+3.4.- Estas dos obligaciones expuestas en las clausulas 3.1 y 3.2 constituirán la única forma de pago por los "SERVICIOS INTEGRADOS PROFESIONALES" realizados por el CONTRATISTA en caso de incumplimiento se podrá pedir la resolución del contrato siendo e/la/los/las "COMITENTE" pasible de pagar los daños y perjuicios que surja por incumplimiento a estas clausulas y otros.
+3.5.- Siendo así estas dos formas de pago una OBLIGACION CONJUNTA las mismas que son de pleno conocimiento y de entera satisfacción por parte del COMITENTE(s) y que no podrá ser cumplida de otra manera sin el consentimiento expreso de la firma "VISION PC"  
+3.6.- El lugar del pago por los “SERVICIOS INTEGRADOS PROFESIONALES” será en las oficinas de la empresa “VISION PC” y no está autorizado por los oficiales de negocios u otro personal de la firma a cobrar por ningún motivo, en caso de realizar será la responsabilidad integra del /las/los/ COMITENTE(S) por cancelados a otro personal sin el autorización expresa del Director Ejecutivo de la firma.
+<B>CUARTA.-  (PLAZO-DEPOSITO)</B>.- El plazo que la firma "VISION PC" concede para el pago o deposito luego de haber aprobado por la Entidad financiera por los servicios realizados es de dos días, caso contrario autorizó a proseguir el proceso judicial, extra-judicial ya sea por lo mejor conveniencia de los procesos a la firma "VISION PC" y sujetándome a los Reglamentos Internos de la firma.
+4.1 El plazo empezara a computarse desde el día del desembolso del dinero del crédito ayudado a obtener gracias a los "SERVICIOS INTEGRADOS PROFESIONALES"  
+<B>QUINTA.- (CLAUSULA PENAL MORATORIA)</B>.- En caso de no cumplir a tiempo con el plazo de la clausula cuarta, se a establecido por consentimiento de ambas partes de poner como sanción el 80% de la comisión  la misma que se encuentra señalada y estipulado en la clausula 3.1.
+<B>SEXTA.- (MORA)</B>.- El solo incumplimiento de la obligación hará  entrar en mora al comitente sin la necesidad de requerimiento solicitud u otra formalidad previa por lo que será pasible a todos los efectos de la mora.
+<B>SEPTIMA.- (SOBRE LOS SERVICIOS OFRECIDOS)</B>.- Se entenderá por servicios integrados profesionales a:
+7.1 Análisis del crédito, a la elección a mejor orientación financiera, Seguimiento del proceso, seguimiento tramitación, análisis de oportunidad y objetividad, información coherente, mediación y cualquier otro requerido para ayudar a obtener un crédito al COMITENTE(S).
+<B>OCTAVA.- (GASTOS EXTRAS Y OTROS)</B>.- Todos aquellos gastos como ser notariales, registrales y cualquier otro necesario correrán por cuenta del los/las/ COMITENTE(S). Los documentos entregados a los oficiales de negocios tienen una validez de 26 días, en caso contrario no se responsabiliza por los documentos entregados a los Oficiales de Negocios ni otra persona de la firma.
+<B>NOVENA.- (GARANTÍAS)</B>.- El/la/los/as COMITENTE(S) garantiza(n) el fiel cumplimiento del contrato con la generalidad de sus bienes habidos y por haber presentes y futuros conforme a lo determinado por el Art. 1335 del Código Civil y la totalidad de los bienes inventariados y detallados en la “Declaración Patrimonial Jurada de bienes” sobre Ios cuales no pesa ningún gravamen por ningún motivo.
+DECIMA.-  (MARCO LEGAL).- En forma expresa se señala como marco legal de este contrato lo señalado en  los artículos 454, 519, 732, del código civil boliviano norma legal que debe ser considerada para efectos de interpretación o mejor las normas vigentes que le aconseje a la firma “VISION PC”.
+<B>DECIMA PRIMERA</B>.- (AUTORIZACION EXPRESA).- En caso de incumplir a la firma "VISION PC", AUTORIZO a registrar como deudor moroso en "INFORCRED" y otras instituciones valederos sin reclamo alguno, hasta el cumplimiento total de la obligación y someto al Reglamento Interno de Créditos de la Firma "VISION PC".
+<B>DECIMA SEGUNDA</B>.-  (INFORMACION).- “VISION PC” podrá exigir a el (los) COMITENTE(S) en cualquier momento todo tipo de datos e información que sean necesarios para "VISION PC".
+<B>DECIMA TERCERA</B>.- (VALIDEZ DE DOCUMENTO PRIVADO).- Las partes reconocen al presente documento la calidad de documento privado, en tanto el mismo no sea elevado a la categoría de instrumento público.]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="66">
+                <property name="height">2in</property>
+                <cell id="67">
+                    <text-data id="254">
+                        <property name="dataSet">ctto_Data Set</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">ci</property>
+                                <text-property name="displayName">ci</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["ci"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">deudor</property>
+                                <text-property name="displayName">deudor</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["deudor"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">deudorAP</property>
+                                <text-property name="displayName">deudorAP</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["deudorAP"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">deudorAM</property>
+                                <text-property name="displayName">deudorAM</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["deudorAM"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">direccion</property>
+                                <text-property name="displayName">direccion</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["direccion"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">nro</property>
+                                <text-property name="displayName">nro</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["nro"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                            <structure>
+                                <property name="name">zona</property>
+                                <text-property name="displayName">zona</text-property>
+                                <expression name="expression" type="javascript">dataSetRow["zona"]</expression>
+                                <property name="dataType">string</property>
+                            </structure>
+                        </list-property>
+                        <expression name="valueExpr">"DECIMA CUARTA.- (CONSENTIMIENTO Y CONFORMIDAD).- Nosotros, 'VISION PC' representado por el Sr. Dr. PAUL ROJAS RAMOS con C.I. 2608420 LP, en merito al testimonio No. 186/2007 de fecha 17 de Septiembre de 2007, suscrito ante la Notaria de Fe Publica No. 076 Notario Dr. Modesto Acebey Figueroa y  por una parte Sr/a/es "+row["deudor"]+" "+row["deudorAP"]+" "+row["deudorAM"]+", con CI Nº"+row["ci"]+"Como COMITENTE(S), damos nuestra conformidad a todas y cada una de las cláusulas precedentes.  El/la (los/as) COMITENTE(S) y demás obligados declaran expresamente haber recibido una sucinta aclaración de los alcances y contenido del presente documento y a cuyo fiel y escrito cumplimiento nos obligamos en toda forma de derecho sin que medie en ello vicio alguno de consentimiento ratifican haber entendido claramente todos los extremos en el detallaos, firmando en señal de aceptación."&#13;
+"Usted señor notario se servirá agregar las demás clausulas de estilo y seguridad."</expression>
+                        <property name="contentType">html</property>
+                    </text-data>
+                </cell>
+            </row>
+            <row id="68">
+                <property name="height">0.9895833333333334in</property>
+                <cell id="69">
+                    <grid id="195">
+                        <column id="196"/>
+                        <column id="197"/>
+                        <column id="198"/>
+                        <column id="199"/>
+                        <row id="200">
+                            <cell id="201">
+                                <label id="215">
+                                    <property name="marginTop">auto</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">Dr. Paul Rojas Ramos</text-property>
+                                </label>
+                            </cell>
+                            <cell id="202"/>
+                            <cell id="203">
+                                <label id="219">
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">Nombres y Apellidos</text-property>
+                                </label>
+                            </cell>
+                            <cell id="204"/>
+                        </row>
+                        <row id="205">
+                            <cell id="206">
+                                <label id="216">
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">CI 2608420 LP</text-property>
+                                </label>
+                            </cell>
+                            <cell id="207"/>
+                            <cell id="208">
+                                <label id="220">
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">CI</text-property>
+                                </label>
+                            </cell>
+                            <cell id="209"/>
+                        </row>
+                        <row id="210">
+                            <cell id="211">
+                                <label id="221">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">Representante VISION PC</text-property>
+                                </label>
+                            </cell>
+                            <cell id="212"/>
+                            <cell id="213">
+                                <label id="222">
+                                    <property name="fontWeight">bold</property>
+                                    <property name="textAlign">left</property>
+                                    <text-property name="text">COMITENTE</text-property>
+                                </label>
+                            </cell>
+                            <cell id="214"/>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+        <grid id="230">
+            <property name="width">7.947916666666667in</property>
+            <column id="231">
+                <property name="width">7.34375in</property>
+            </column>
+            <column id="232">
+                <property name="width">0.22916666666666666in</property>
+            </column>
+            <column id="233">
+                <property name="width">0.375in</property>
+            </column>
+            <row id="234">
+                <cell id="235"/>
+                <cell id="236"/>
+                <cell id="237"/>
+            </row>
+            <row id="238">
+                <cell id="239"/>
+                <cell id="240"/>
+                <cell id="241"/>
+            </row>
+            <row id="242">
+                <cell id="243"/>
+                <cell id="244"/>
+                <cell id="245"/>
+            </row>
+        </grid>
+    </body>
+</report>

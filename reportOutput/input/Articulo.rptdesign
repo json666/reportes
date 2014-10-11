@@ -1,0 +1,1538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.0.v201405191524 Build &lt;4.4.0.v20140606-1451></property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="layoutPreference">auto layout</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="myParam" id="7">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="dsSalesforce" id="8">
+            <method name="open"><![CDATA[//convertimos el “String” en “JSON”.
+jsonData = eval('('+params["myParam"].value+')');
+
+//obtenemos solo el tag “result”, con este tag nos tiene que enviar la capa de “gestionReportes”
+jsonData = jsonData.result;
+
+
+//variable global en el reporte
+valor = true;]]></method>
+        </script-data-source>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="DataSetSalesForce" id="9">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">precio</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">upc</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">descripcionArticulo</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                </structure>
+                <structure>
+                    <property name="columnName">precio</property>
+                </structure>
+                <structure>
+                    <property name="columnName">upc</property>
+                </structure>
+                <structure>
+                    <property name="columnName">descripcionArticulo</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">precio</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">upc</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">descripcionArticulo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">dsSalesforce</property>
+            <method name="fetch"><![CDATA[//la variable valor está definida en el Data Source (paso 10), este nos permite ingresar una sola vez a esta parte del reporte.
+while(valor) {
+
+//estamos asignando a la variable del reporte el valor del JSON.		
+	row["id"] =  jsonData.id;
+	row["precio"] =  jsonData.precio;
+	row["upc"] =  jsonData.upc;
+	row["descripcionArticulo"] =  jsonData.descripcionArticulo;
+
+//cambiamos el valor de la variable  a false.
+	valor = false;
+//indicamos que se tiene que imprimir esta parte
+	return true;
+
+}
+//indicamos que ya no se tiene que imprimir.
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="10">
+            <column id="11"/>
+            <column id="12"/>
+            <column id="13"/>
+            <column id="14"/>
+            <column id="15"/>
+            <row id="536">
+                <cell id="537">
+                    <property name="colSpan">5</property>
+                    <property name="rowSpan">2</property>
+                    <property name="textUnderline">underline</property>
+                    <property name="textAlign">center</property>
+                    <data id="545">
+                        <property name="textAlign">center</property>
+                        <property name="dataSet">DataSetSalesForce</property>
+                        <list-property name="boundDataColumns">
+                            <structure>
+                                <property name="name">descripcionArticulo</property>
+                                <text-property name="displayName">descripcionArticulo</text-property>
+                                <expression name="expression" type="javascript">"ARTICULO "+dataSetRow["descripcionArticulo"]</expression>
+                                <property name="dataType">string</property>
+                                <property name="allowExport">true</property>
+                            </structure>
+                        </list-property>
+                        <property name="resultSetColumn">descripcionArticulo</property>
+                    </data>
+                </cell>
+            </row>
+            <row id="530"/>
+            <row id="16">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="17">
+                    <grid id="64">
+                        <property name="height">1in</property>
+                        <column id="65"/>
+                        <column id="66"/>
+                        <row id="67">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="68">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="70">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="71">
+                                <label id="73">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="72">
+                                <data id="79">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="18">
+                    <grid id="80">
+                        <property name="height">1in</property>
+                        <column id="81"/>
+                        <column id="82"/>
+                        <row id="83">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="84">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="85">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="86">
+                                <label id="87">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="88">
+                                <data id="89">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="19">
+                    <grid id="90">
+                        <property name="height">1in</property>
+                        <column id="91"/>
+                        <column id="92"/>
+                        <row id="93">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="94">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="95">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="96">
+                                <label id="97">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="98">
+                                <data id="99">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="20">
+                    <grid id="100">
+                        <property name="height">1in</property>
+                        <column id="101"/>
+                        <column id="102"/>
+                        <row id="103">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="104">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="105">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="106">
+                                <label id="107">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="108">
+                                <data id="109">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="21">
+                    <grid id="110">
+                        <property name="height">1in</property>
+                        <column id="111"/>
+                        <column id="112"/>
+                        <row id="113">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="114">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="115">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="116">
+                                <label id="117">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="118">
+                                <data id="119">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="470">
+                <property name="height">0.23958333333333334in</property>
+                <cell id="471"/>
+                <cell id="472"/>
+                <cell id="473"/>
+                <cell id="474"/>
+                <cell id="475"/>
+            </row>
+            <row id="22">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="23">
+                    <grid id="120">
+                        <property name="height">1in</property>
+                        <column id="121"/>
+                        <column id="122"/>
+                        <row id="123">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="124">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="125">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="126">
+                                <label id="127">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="128">
+                                <data id="129">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="24">
+                    <grid id="130">
+                        <property name="height">1in</property>
+                        <column id="131"/>
+                        <column id="132"/>
+                        <row id="133">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="134">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="135">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="136">
+                                <label id="137">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="138">
+                                <data id="139">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="25">
+                    <grid id="140">
+                        <property name="height">1in</property>
+                        <column id="141"/>
+                        <column id="142"/>
+                        <row id="143">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="144">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="145">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="146">
+                                <label id="147">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="148">
+                                <data id="149">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="26">
+                    <grid id="150">
+                        <property name="height">1in</property>
+                        <column id="151"/>
+                        <column id="152"/>
+                        <row id="153">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="154">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="155">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="156">
+                                <label id="157">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="158">
+                                <data id="159">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="27">
+                    <grid id="160">
+                        <property name="height">1in</property>
+                        <column id="161"/>
+                        <column id="162"/>
+                        <row id="163">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="164">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="165">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="166">
+                                <label id="167">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="168">
+                                <data id="169">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="476">
+                <cell id="477"/>
+                <cell id="478"/>
+                <cell id="479"/>
+                <cell id="480"/>
+                <cell id="481"/>
+            </row>
+            <row id="28">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="29">
+                    <grid id="170">
+                        <property name="height">1in</property>
+                        <column id="171"/>
+                        <column id="172"/>
+                        <row id="173">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="174">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="175">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="176">
+                                <label id="177">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="178">
+                                <data id="179">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="30">
+                    <grid id="180">
+                        <property name="height">1in</property>
+                        <column id="181"/>
+                        <column id="182"/>
+                        <row id="183">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="184">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="185">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="186">
+                                <label id="187">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="188">
+                                <data id="189">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="31">
+                    <grid id="190">
+                        <property name="height">1in</property>
+                        <column id="191"/>
+                        <column id="192"/>
+                        <row id="193">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="194">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="195">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="196">
+                                <label id="197">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="198">
+                                <data id="199">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="32">
+                    <grid id="200">
+                        <property name="height">1in</property>
+                        <column id="201"/>
+                        <column id="202"/>
+                        <row id="203">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="204">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="205">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="206">
+                                <label id="207">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="208">
+                                <data id="209">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="33">
+                    <grid id="210">
+                        <property name="height">1in</property>
+                        <column id="211"/>
+                        <column id="212"/>
+                        <row id="213">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="214">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="215">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="216">
+                                <label id="217">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="218">
+                                <data id="219">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="494">
+                <cell id="495"/>
+                <cell id="496"/>
+                <cell id="497"/>
+                <cell id="498"/>
+                <cell id="499"/>
+            </row>
+            <row id="34">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="35">
+                    <grid id="220">
+                        <property name="height">1in</property>
+                        <column id="221"/>
+                        <column id="222"/>
+                        <row id="223">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="224">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="225">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="226">
+                                <label id="227">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="228">
+                                <data id="229">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="36">
+                    <grid id="230">
+                        <property name="height">1in</property>
+                        <column id="231"/>
+                        <column id="232"/>
+                        <row id="233">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="234">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="235">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="236">
+                                <label id="237">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="238">
+                                <data id="239">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="37">
+                    <grid id="240">
+                        <property name="height">1in</property>
+                        <column id="241"/>
+                        <column id="242"/>
+                        <row id="243">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="244">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="245">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="246">
+                                <label id="247">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="248">
+                                <data id="249">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="38">
+                    <grid id="250">
+                        <property name="height">1in</property>
+                        <column id="251"/>
+                        <column id="252"/>
+                        <row id="253">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="254">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="255">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="256">
+                                <label id="257">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="258">
+                                <data id="259">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="39">
+                    <grid id="260">
+                        <property name="height">1in</property>
+                        <column id="261"/>
+                        <column id="262"/>
+                        <row id="263">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="264">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="265">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="266">
+                                <label id="267">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="268">
+                                <data id="269">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="512">
+                <cell id="513"/>
+                <cell id="514"/>
+                <cell id="515"/>
+                <cell id="516"/>
+                <cell id="517"/>
+            </row>
+            <row id="40">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="41">
+                    <grid id="270">
+                        <property name="height">1in</property>
+                        <column id="271"/>
+                        <column id="272"/>
+                        <row id="273">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="274">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="275">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="276">
+                                <label id="277">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="278">
+                                <data id="279">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="42">
+                    <grid id="280">
+                        <property name="height">1in</property>
+                        <column id="281"/>
+                        <column id="282"/>
+                        <row id="283">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="284">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="285">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="286">
+                                <label id="287">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="288">
+                                <data id="289">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="43">
+                    <grid id="290">
+                        <property name="height">1in</property>
+                        <column id="291"/>
+                        <column id="292"/>
+                        <row id="293">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="294">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="295">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="296">
+                                <label id="297">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="298">
+                                <data id="299">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="44">
+                    <grid id="300">
+                        <property name="height">1in</property>
+                        <column id="301"/>
+                        <column id="302"/>
+                        <row id="303">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="304">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="305">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="306">
+                                <label id="307">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="308">
+                                <data id="309">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="45">
+                    <grid id="310">
+                        <property name="height">1in</property>
+                        <column id="311"/>
+                        <column id="312"/>
+                        <row id="313">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="314">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="315">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="316">
+                                <label id="317">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="318">
+                                <data id="319">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="518">
+                <cell id="519"/>
+                <cell id="520"/>
+                <cell id="521"/>
+                <cell id="522"/>
+                <cell id="523"/>
+            </row>
+            <row id="46">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="47">
+                    <grid id="320">
+                        <property name="height">1in</property>
+                        <column id="321"/>
+                        <column id="322"/>
+                        <row id="323">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="324">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="325">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="326">
+                                <label id="327">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="328">
+                                <data id="329">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="48">
+                    <grid id="330">
+                        <property name="height">1in</property>
+                        <column id="331"/>
+                        <column id="332"/>
+                        <row id="333">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="334">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="335">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="336">
+                                <label id="337">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="338">
+                                <data id="339">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="49">
+                    <grid id="340">
+                        <property name="height">1in</property>
+                        <column id="341"/>
+                        <column id="342"/>
+                        <row id="343">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="344">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="345">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="346">
+                                <label id="347">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="348">
+                                <data id="349">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="50">
+                    <grid id="350">
+                        <property name="height">1in</property>
+                        <column id="351"/>
+                        <column id="352"/>
+                        <row id="353">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="354">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="355">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="356">
+                                <label id="357">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="358">
+                                <data id="359">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="51">
+                    <grid id="360">
+                        <property name="height">1in</property>
+                        <column id="361"/>
+                        <column id="362"/>
+                        <row id="363">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="364">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="365">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="366">
+                                <label id="367">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="368">
+                                <data id="369">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+            <row id="524">
+                <cell id="525"/>
+                <cell id="526"/>
+                <cell id="527"/>
+                <cell id="528"/>
+                <cell id="529"/>
+            </row>
+            <row id="52">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="53">
+                    <grid id="370">
+                        <property name="height">1in</property>
+                        <column id="371"/>
+                        <column id="372"/>
+                        <row id="373">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="374">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="375">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="376">
+                                <label id="377">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="378">
+                                <data id="379">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="54">
+                    <grid id="380">
+                        <property name="height">1in</property>
+                        <column id="381"/>
+                        <column id="382"/>
+                        <row id="383">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="384">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="385">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="386">
+                                <label id="387">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="388">
+                                <data id="389">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="55">
+                    <grid id="390">
+                        <property name="height">1in</property>
+                        <column id="391"/>
+                        <column id="392"/>
+                        <row id="393">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="394">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="395">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="396">
+                                <label id="397">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="398">
+                                <data id="399">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="56">
+                    <grid id="400">
+                        <property name="height">1in</property>
+                        <column id="401"/>
+                        <column id="402"/>
+                        <row id="403">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="404">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="405">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="406">
+                                <label id="407">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="408">
+                                <data id="409">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+                <cell id="57">
+                    <grid id="410">
+                        <property name="height">1in</property>
+                        <column id="411"/>
+                        <column id="412"/>
+                        <row id="413">
+                            <property name="height">0.7291666666666666in</property>
+                            <cell id="414">
+                                <property name="colSpan">2</property>
+                                <property name="rowSpan">1</property>
+                            </cell>
+                        </row>
+                        <row id="415">
+                            <property name="height">0.2708333333333333in</property>
+                            <cell id="416">
+                                <label id="417">
+                                    <text-property name="text">Precio</text-property>
+                                </label>
+                            </cell>
+                            <cell id="418">
+                                <data id="419">
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">precio</property>
+                                            <text-property name="displayName">precio</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">precio</property>
+                                </data>
+                            </cell>
+                        </row>
+                    </grid>
+                </cell>
+            </row>
+        </grid>
+    </body>
+</report>
