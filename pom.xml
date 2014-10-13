@@ -204,8 +204,8 @@
                 <application.url_reportes_service>http://localhost:8089/s-reportes/rest/</application.url_reportes_service>
 			    <application.url_spf_service>http://localhost:8089/s-spf/rest/</application.url_spf_service>
 			    <application.url_salesforce_service>http://localhost:8089/b-salesforce/rest/</application.url_salesforce_service>
-			    <reportes.local.output.folder>D:\reportOutput</reportes.local.output.folder>
-			    <reportes.servlet.output.folder>D:\reportOutput</reportes.servlet.output.folder>
+			    <reportes.local.output.folder>D:/reportOutput</reportes.local.output.folder>
+			    <reportes.servlet.output.folder>D:/reportOutput</reportes.servlet.output.folder>
 			</properties>
 		</profile>
 
