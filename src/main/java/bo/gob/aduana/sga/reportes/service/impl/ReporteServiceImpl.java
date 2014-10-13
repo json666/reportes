@@ -82,7 +82,7 @@ public class ReporteServiceImpl implements ReporteService {
                 System.out.println("ABS:" + "file://" + imageCodBarras.getAbsolutePath() + "---" + codigoBarras.getPath() + " " + codigoBarras.toURI().getPath());
                 reporteRender.setOutputFolder(path);
 
-                return reporteRender.generaReporte(jsonObject.toString(),"file://" + imageCodBarras.getAbsolutePath(), tipoReporte + ".rptdesign", formato);
+                return reporteRender.generaReporte(jsonObject.toString(),"file://" + imageCodBarras.toURI().getPath(), tipoReporte + ".rptdesign", formato);
 
             } else {
                 throw new ReporteGenerationException("Datos no encontrados.");

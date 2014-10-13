@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>bo.gob.sga.aduana</groupId>
-	<artifactId>reportes-birt</artifactId>
+	<artifactId>reportes</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
@@ -191,7 +191,7 @@
 			</plugins>
 		</pluginManagement>
 
-		<finalName>s-reportes</finalName>
+		<finalName>reportes</finalName>
 	</build>
 
 	<profiles>
@@ -201,9 +201,9 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-                <application.url_reportes_service>http://localhost:8089/s-reportes/rest/</application.url_reportes_service>
+                <application.url_reportes_service>http://localhost:8080/reportes/rest/</application.url_reportes_service>
 			    <application.url_spf_service>http://localhost:8089/s-spf/rest/</application.url_spf_service>
-			    <application.url_salesforce_service>http://localhost:8089/b-salesforce/rest/</application.url_salesforce_service>
+			    <application.url_salesforce_service>http://localhost:8080/b-salesforce/rest/</application.url_salesforce_service>
 			    <reportes.local.output.folder>D:/reportOutput</reportes.local.output.folder>
 			    <reportes.servlet.output.folder>D:/reportOutput</reportes.servlet.output.folder>
 			</properties>
@@ -212,7 +212,7 @@
 		<profile>
 			<id>dev</id>
 			<properties>
-                <application.url_reportes_service>http://10.0.4.77:8080/s-reportes/rest/</application.url_reportes_service>
+                <application.url_reportes_service>http://10.0.4.77:8080/reportes/rest/</application.url_reportes_service>
 			    <application.url_spf_service>http://10.0.4.77:8080/s-spf/rest/</application.url_spf_service>
 			    <application.url_salesforce_service>http://10.0.4.77:8080/b-oce/rest/</application.url_salesforce_service>
 			    <reportes.local.output.folder>/home/gerson/reportes</reportes.local.output.folder>
@@ -223,7 +223,7 @@
 		<profile>
 			<id>test</id>
 			<properties>
-                <application.url_reportes_service>http://10.100.70.112/s-reportes/rest/</application.url_reportes_service>
+                <application.url_reportes_service>http://10.100.70.112/reportes/rest/</application.url_reportes_service>
 			    <application.url_spf_service>http://10.100.70.112/s-spf/rest/</application.url_spf_service>
 			    <application.url_salesforce_service>http://10.100.70.112/b-oce/rest/</application.url_salesforce_service>
 			    <reportes.local.output.folder>/u02/jboss/data/reportes</reportes.local.output.folder>
@@ -234,7 +234,7 @@
 		<profile>
 			<id>prod</id>
 			<properties>
-                <application.url_reportes_service>http://10.100.100.227/s-reportes/rest/</application.url_reportes_service>
+                <application.url_reportes_service>http://10.100.100.227/reportes/rest/</application.url_reportes_service>
 			    <application.url_spf_service>http://10.100.100.227/s-spf/rest/</application.url_spf_service>
 			    <application.url_salesforce_service>http://10.100.100.227/b-oce/rest/</application.url_salesforce_service>
 			    <reportes.local.output.folder>/u02/jboss/data/reportes</reportes.local.output.folder>
