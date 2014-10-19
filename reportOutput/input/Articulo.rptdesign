@@ -18,6 +18,17 @@
                 <property name="category">Unformatted</property>
             </structure>
         </scalar-parameter>
+        <scalar-parameter name="codigoBarras" id="546">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
     </parameters>
     <data-sources>
         <script-data-source name="dsSalesforce" id="8">
@@ -55,6 +66,11 @@ valor = true;]]></method>
                     <property name="name">descripcionArticulo</property>
                     <property name="dataType">string</property>
                 </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">codigoArticulo</property>
+                    <property name="dataType">string</property>
+                </structure>
             </list-property>
             <list-property name="columnHints">
                 <structure>
@@ -68,6 +84,9 @@ valor = true;]]></method>
                 </structure>
                 <structure>
                     <property name="columnName">descripcionArticulo</property>
+                </structure>
+                <structure>
+                    <property name="columnName">codigoArticulo</property>
                 </structure>
             </list-property>
             <structure name="cachedMetaData">
@@ -92,6 +111,11 @@ valor = true;]]></method>
                         <property name="name">descripcionArticulo</property>
                         <property name="dataType">string</property>
                     </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">codigoArticulo</property>
+                        <property name="dataType">string</property>
+                    </structure>
                 </list-property>
             </structure>
             <property name="dataSource">dsSalesforce</property>
@@ -103,6 +127,7 @@ while(valor) {
 	row["precio"] =  jsonData.precio;
 	row["upc"] =  jsonData.upc;
 	row["descripcionArticulo"] =  jsonData.descripcionArticulo;
+	row["codigoArticulo"] =  jsonData.codigoArticulo;
 
 //cambiamos el valor de la variable  a false.
 	valor = false;
@@ -188,6 +213,17 @@ return false;]]></method>
                 </cell>
             </row>
             <row id="530"/>
+            <row id="620">
+                <property name="borderBottomStyle">dotted</property>
+                <property name="borderBottomWidth">thin</property>
+                <property name="borderTopStyle">dotted</property>
+                <property name="borderTopWidth">thin</property>
+                <cell id="621"/>
+                <cell id="622"/>
+                <cell id="623"/>
+                <cell id="624"/>
+                <cell id="625"/>
+            </row>
             <row id="16">
                 <property name="borderBottomStyle">dotted</property>
                 <property name="borderBottomWidth">thin</property>
@@ -203,6 +239,30 @@ return false;]]></method>
                             <cell id="68">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="547">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="657">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="70">
@@ -219,8 +279,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -239,6 +300,30 @@ return false;]]></method>
                             <cell id="84">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="583">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="658">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="85">
@@ -255,8 +340,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -275,6 +361,30 @@ return false;]]></method>
                             <cell id="94">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="584">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="659">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="95">
@@ -291,8 +401,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -311,6 +422,30 @@ return false;]]></method>
                             <cell id="104">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="585">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="660">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="105">
@@ -327,8 +462,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -347,6 +483,30 @@ return false;]]></method>
                             <cell id="114">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="586">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="661">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="115">
@@ -363,8 +523,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -397,6 +558,30 @@ return false;]]></method>
                             <cell id="124">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="587">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="662">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="125">
@@ -413,8 +598,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -433,6 +619,30 @@ return false;]]></method>
                             <cell id="134">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="588">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="663">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="135">
@@ -449,8 +659,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -469,6 +680,30 @@ return false;]]></method>
                             <cell id="144">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="589">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="664">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="145">
@@ -485,8 +720,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -505,6 +741,30 @@ return false;]]></method>
                             <cell id="154">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="590">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="665">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="155">
@@ -521,8 +781,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -541,6 +802,30 @@ return false;]]></method>
                             <cell id="164">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="591">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="666">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="165">
@@ -557,8 +842,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -590,6 +876,30 @@ return false;]]></method>
                             <cell id="174">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="592">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="667">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="175">
@@ -606,8 +916,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -626,6 +937,30 @@ return false;]]></method>
                             <cell id="184">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="593">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="669">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="185">
@@ -642,8 +977,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -662,6 +998,30 @@ return false;]]></method>
                             <cell id="194">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="594">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="670">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="195">
@@ -678,8 +1038,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -698,6 +1059,30 @@ return false;]]></method>
                             <cell id="204">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="595">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="671">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="205">
@@ -714,8 +1099,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -734,6 +1120,30 @@ return false;]]></method>
                             <cell id="214">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="596">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="672">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="215">
@@ -750,8 +1160,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -783,6 +1194,30 @@ return false;]]></method>
                             <cell id="224">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="597">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="673">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="225">
@@ -799,8 +1234,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -819,6 +1255,30 @@ return false;]]></method>
                             <cell id="234">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="598">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="674">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="235">
@@ -835,8 +1295,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -855,6 +1316,30 @@ return false;]]></method>
                             <cell id="244">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="599">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="675">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="245">
@@ -871,8 +1356,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -891,6 +1377,30 @@ return false;]]></method>
                             <cell id="254">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="600">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="676">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="255">
@@ -907,8 +1417,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -927,6 +1438,30 @@ return false;]]></method>
                             <cell id="264">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="601">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="677">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="265">
@@ -943,8 +1478,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -976,6 +1512,30 @@ return false;]]></method>
                             <cell id="274">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="602">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="678">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="275">
@@ -992,8 +1552,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1012,6 +1573,30 @@ return false;]]></method>
                             <cell id="284">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="603">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="679">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="285">
@@ -1028,8 +1613,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1048,6 +1634,30 @@ return false;]]></method>
                             <cell id="294">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="604">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="680">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="295">
@@ -1064,8 +1674,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1084,6 +1695,30 @@ return false;]]></method>
                             <cell id="304">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="605">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="681">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="305">
@@ -1100,8 +1735,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1120,6 +1756,30 @@ return false;]]></method>
                             <cell id="314">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="606">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="682">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="315">
@@ -1136,8 +1796,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1169,6 +1830,30 @@ return false;]]></method>
                             <cell id="324">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="607">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="683">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="325">
@@ -1185,8 +1870,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1205,6 +1891,30 @@ return false;]]></method>
                             <cell id="334">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="608">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="684">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="335">
@@ -1221,8 +1931,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1241,6 +1952,30 @@ return false;]]></method>
                             <cell id="344">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="609">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="685">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="345">
@@ -1257,8 +1992,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1277,6 +2013,30 @@ return false;]]></method>
                             <cell id="354">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="610">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="686">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="355">
@@ -1293,8 +2053,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1313,6 +2074,30 @@ return false;]]></method>
                             <cell id="364">
                                 <property name="colSpan">2</property>
                                 <property name="rowSpan">1</property>
+                                <property name="paddingTop">0pt</property>
+                                <property name="paddingLeft">0pt</property>
+                                <property name="paddingBottom">0pt</property>
+                                <property name="paddingRight">0pt</property>
+                                <property name="textAlign">center</property>
+                                <image id="611">
+                                    <property name="height">48px</property>
+                                    <property name="width">102px</property>
+                                    <property name="source">file</property>
+                                    <expression name="uri" type="javascript">params["codigoBarras"].value</expression>
+                                </image>
+                                <data id="687">
+                                    <property name="fontSize">7pt</property>
+                                    <property name="dataSet">DataSetSalesForce</property>
+                                    <list-property name="boundDataColumns">
+                                        <structure>
+                                            <property name="name">codigoArticulo</property>
+                                            <text-property name="displayName">codigoArticulo</text-property>
+                                            <expression name="expression" type="javascript">dataSetRow["codigoArticulo"]</expression>
+                                            <property name="dataType">string</property>
+                                        </structure>
+                                    </list-property>
+                                    <property name="resultSetColumn">codigoArticulo</property>
+                                </data>
                             </cell>
                         </row>
                         <row id="365">
@@ -1329,8 +2114,9 @@ return false;]]></method>
                                         <structure>
                                             <property name="name">precio</property>
                                             <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
                                             <property name="dataType">string</property>
+                                            <property name="allowExport">true</property>
                                         </structure>
                                     </list-property>
                                     <property name="resultSetColumn">precio</property>
@@ -1346,192 +2132,6 @@ return false;]]></method>
                 <cell id="527"/>
                 <cell id="528"/>
                 <cell id="529"/>
-            </row>
-            <row id="52">
-                <property name="borderBottomStyle">dotted</property>
-                <property name="borderBottomWidth">thin</property>
-                <property name="borderTopStyle">dotted</property>
-                <property name="borderTopWidth">thin</property>
-                <cell id="53">
-                    <grid id="370">
-                        <property name="height">1in</property>
-                        <column id="371"/>
-                        <column id="372"/>
-                        <row id="373">
-                            <property name="height">0.7291666666666666in</property>
-                            <cell id="374">
-                                <property name="colSpan">2</property>
-                                <property name="rowSpan">1</property>
-                            </cell>
-                        </row>
-                        <row id="375">
-                            <property name="height">0.2708333333333333in</property>
-                            <cell id="376">
-                                <label id="377">
-                                    <text-property name="text">Precio</text-property>
-                                </label>
-                            </cell>
-                            <cell id="378">
-                                <data id="379">
-                                    <property name="dataSet">DataSetSalesForce</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">precio</property>
-                                </data>
-                            </cell>
-                        </row>
-                    </grid>
-                </cell>
-                <cell id="54">
-                    <grid id="380">
-                        <property name="height">1in</property>
-                        <column id="381"/>
-                        <column id="382"/>
-                        <row id="383">
-                            <property name="height">0.7291666666666666in</property>
-                            <cell id="384">
-                                <property name="colSpan">2</property>
-                                <property name="rowSpan">1</property>
-                            </cell>
-                        </row>
-                        <row id="385">
-                            <property name="height">0.2708333333333333in</property>
-                            <cell id="386">
-                                <label id="387">
-                                    <text-property name="text">Precio</text-property>
-                                </label>
-                            </cell>
-                            <cell id="388">
-                                <data id="389">
-                                    <property name="dataSet">DataSetSalesForce</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">precio</property>
-                                </data>
-                            </cell>
-                        </row>
-                    </grid>
-                </cell>
-                <cell id="55">
-                    <grid id="390">
-                        <property name="height">1in</property>
-                        <column id="391"/>
-                        <column id="392"/>
-                        <row id="393">
-                            <property name="height">0.7291666666666666in</property>
-                            <cell id="394">
-                                <property name="colSpan">2</property>
-                                <property name="rowSpan">1</property>
-                            </cell>
-                        </row>
-                        <row id="395">
-                            <property name="height">0.2708333333333333in</property>
-                            <cell id="396">
-                                <label id="397">
-                                    <text-property name="text">Precio</text-property>
-                                </label>
-                            </cell>
-                            <cell id="398">
-                                <data id="399">
-                                    <property name="dataSet">DataSetSalesForce</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">precio</property>
-                                </data>
-                            </cell>
-                        </row>
-                    </grid>
-                </cell>
-                <cell id="56">
-                    <grid id="400">
-                        <property name="height">1in</property>
-                        <column id="401"/>
-                        <column id="402"/>
-                        <row id="403">
-                            <property name="height">0.7291666666666666in</property>
-                            <cell id="404">
-                                <property name="colSpan">2</property>
-                                <property name="rowSpan">1</property>
-                            </cell>
-                        </row>
-                        <row id="405">
-                            <property name="height">0.2708333333333333in</property>
-                            <cell id="406">
-                                <label id="407">
-                                    <text-property name="text">Precio</text-property>
-                                </label>
-                            </cell>
-                            <cell id="408">
-                                <data id="409">
-                                    <property name="dataSet">DataSetSalesForce</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">precio</property>
-                                </data>
-                            </cell>
-                        </row>
-                    </grid>
-                </cell>
-                <cell id="57">
-                    <grid id="410">
-                        <property name="height">1in</property>
-                        <column id="411"/>
-                        <column id="412"/>
-                        <row id="413">
-                            <property name="height">0.7291666666666666in</property>
-                            <cell id="414">
-                                <property name="colSpan">2</property>
-                                <property name="rowSpan">1</property>
-                            </cell>
-                        </row>
-                        <row id="415">
-                            <property name="height">0.2708333333333333in</property>
-                            <cell id="416">
-                                <label id="417">
-                                    <text-property name="text">Precio</text-property>
-                                </label>
-                            </cell>
-                            <cell id="418">
-                                <data id="419">
-                                    <property name="dataSet">DataSetSalesForce</property>
-                                    <list-property name="boundDataColumns">
-                                        <structure>
-                                            <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">dataSetRow["precio"]</expression>
-                                            <property name="dataType">string</property>
-                                        </structure>
-                                    </list-property>
-                                    <property name="resultSetColumn">precio</property>
-                                </data>
-                            </cell>
-                        </row>
-                    </grid>
-                </cell>
             </row>
         </grid>
     </body>
