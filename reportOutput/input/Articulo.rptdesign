@@ -53,7 +53,7 @@ valor = true;]]></method>
                 </structure>
                 <structure>
                     <property name="position">2</property>
-                    <property name="name">precio</property>
+                    <property name="name">precioCosto</property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
@@ -77,7 +77,7 @@ valor = true;]]></method>
                     <property name="columnName">id</property>
                 </structure>
                 <structure>
-                    <property name="columnName">precio</property>
+                    <property name="columnName">precioCosto</property>
                 </structure>
                 <structure>
                     <property name="columnName">upc</property>
@@ -98,7 +98,7 @@ valor = true;]]></method>
                     </structure>
                     <structure>
                         <property name="position">2</property>
-                        <property name="name">precio</property>
+                        <property name="name">precioCosto</property>
                         <property name="dataType">string</property>
                     </structure>
                     <structure>
@@ -214,8 +214,6 @@ return false;]]></method>
             </row>
             <row id="530"/>
             <row id="620">
-                <property name="borderBottomStyle">dotted</property>
-                <property name="borderBottomWidth">thin</property>
                 <cell id="621"/>
                 <cell id="622"/>
                 <cell id="623"/>
@@ -225,8 +223,6 @@ return false;]]></method>
             <row id="16">
                 <property name="borderBottomStyle">dotted</property>
                 <property name="borderBottomWidth">thin</property>
-                <property name="borderTopStyle">dotted</property>
-                <property name="borderTopWidth">thin</property>
                 <cell id="17">
                     <property name="paddingTop">0pt</property>
                     <property name="paddingLeft">0pt</property>
@@ -281,8 +277,8 @@ return false;]]></method>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precioCosto"]</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -347,8 +343,8 @@ return false;]]></method>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -413,8 +409,8 @@ return false;]]></method>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -479,8 +475,8 @@ return false;]]></method>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -545,8 +541,8 @@ return false;]]></method>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -618,13 +614,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="128">
-                                <data id="129">
+                                <data id="688">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -684,13 +680,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="138">
-                                <data id="139">
+                                <data id="690">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -750,13 +746,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="148">
-                                <data id="149">
+                                <data id="691">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -816,13 +812,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="158">
-                                <data id="159">
+                                <data id="692">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -882,13 +878,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="168">
-                                <data id="169">
+                                <data id="693">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -959,13 +955,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="178">
-                                <data id="179">
+                                <data id="694">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1025,13 +1021,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="188">
-                                <data id="189">
+                                <data id="695">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1091,13 +1087,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="198">
-                                <data id="199">
+                                <data id="696">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1157,13 +1153,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="208">
-                                <data id="209">
+                                <data id="697">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1223,13 +1219,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="218">
-                                <data id="219">
+                                <data id="699">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1300,13 +1296,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="228">
-                                <data id="229">
+                                <data id="700">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1366,13 +1362,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="238">
-                                <data id="239">
+                                <data id="701">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1432,13 +1428,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="248">
-                                <data id="249">
+                                <data id="702">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1498,13 +1494,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="258">
-                                <data id="259">
+                                <data id="703">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1564,13 +1560,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="268">
-                                <data id="269">
+                                <data id="704">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1641,13 +1637,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="278">
-                                <data id="279">
+                                <data id="705">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1707,13 +1703,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="288">
-                                <data id="289">
+                                <data id="706">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1773,13 +1769,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="298">
-                                <data id="299">
+                                <data id="707">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1839,13 +1835,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="308">
-                                <data id="309">
+                                <data id="708">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1905,13 +1901,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="318">
-                                <data id="319">
+                                <data id="709">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -1982,13 +1978,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="328">
-                                <data id="329">
+                                <data id="710">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -2048,13 +2044,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="338">
-                                <data id="339">
+                                <data id="711">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -2114,13 +2110,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="348">
-                                <data id="349">
+                                <data id="712">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -2180,13 +2176,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="358">
-                                <data id="359">
+                                <data id="713">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
@@ -2246,13 +2242,13 @@ return false;]]></method>
                                 </label>
                             </cell>
                             <cell id="368">
-                                <data id="369">
+                                <data id="714">
                                     <property name="dataSet">DataSetSalesForce</property>
                                     <list-property name="boundDataColumns">
                                         <structure>
                                             <property name="name">precio</property>
-                                            <text-property name="displayName">precio</text-property>
-                                            <expression name="expression" type="javascript">"Bs. "+dataSetRow["precio"]</expression>
+                                            <text-property name="displayName">precioCosto</text-property>
+                                            <expression name="expression" type="javascript">"Bs. "+dataSetRowprecioCosto</expression>
                                             <property name="dataType">string</property>
                                             <property name="allowExport">true</property>
                                         </structure>
