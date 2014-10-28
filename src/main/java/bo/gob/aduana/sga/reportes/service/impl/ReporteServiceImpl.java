@@ -65,7 +65,7 @@ public class ReporteServiceImpl implements ReporteService {
                 ArticulosReportes articulosReportes = mapper.readValue(json, ArticulosReportes.class);
 
                 // convert byte array back to BufferedImage
-                System.out.println(articulosReportes.getPrecio());
+                System.out.println(articulosReportes.getPrecioCosto());
                 InputStream in = new ByteArrayInputStream(articulosReportes.getUpc());
                 BufferedImage bImageFromConvert = ImageIO.read(in);
                 File codigoBarras = new File(LectorArchivosProperties.REPORTES_LOCAL_OUTPUT_FOLDER + "/" + variable + "afrodita.gif");
